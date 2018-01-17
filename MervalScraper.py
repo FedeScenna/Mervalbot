@@ -7,7 +7,7 @@ Created on Wed Jan 10 19:20:45 2018
 from secrets import *
 from bs4 import BeautifulSoup
 import urllib.request as urllib
-import re, os, time, datetime
+import time, datetime
 import pandas as pd
 import tweepy
 

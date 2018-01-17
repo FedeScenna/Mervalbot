@@ -1,4 +1,7 @@
-beautifulsoup4==4.6.0
-urllib3==1.22
+bs4==4.6.0
+urllib.request==3.6
 pandas==0.22.0
 tweepy==3.5.0
+
+datetime==3.6.4
+time==3.6.4

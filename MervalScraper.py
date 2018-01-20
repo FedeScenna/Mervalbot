@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 10 19:20:45 2018
-
-@author: federico.i.scenna
-"""
 from secrets import *
 from bs4 import BeautifulSoup
 import urllib.request as urllib
@@ -43,14 +38,10 @@ auth.set_access_token(access_token, access_secret)
  #Construct the API instance
 api = tweepy.API(auth) # create an API object
 
-try:
-     api.update_status("Cierre de las acciones del índice Merval al día "+str(datetime.datetime.now().day)+"/"+str(datetime.datetime.now().month)+"/"+str(datetime.datetime.now().year))
-except tweepy.error.TweepError:
-     pass
-time.sleep(3)
-for index, accion in merval.iterrows():
-     try:
-          api.update_status(str(datetime.datetime.now().day)+"/"+str(datetime.datetime.now().month)+"/"+str(datetime.datetime.now().year)+": "+accion['stock'] + " cierra en "+ accion['close']+". Variación diaria: " + accion['var'])
-     except tweepy.error.TweepError:
-          pass
-     time.sleep(3)
+if now.strftime("%A") != ("Saturday" or "Sunday"):  
+    for index, accion in merval.iterrows():
+         try:
+              api.update_status(str(datetime.datetime.now().day)+"/"+str(datetime.datetime.now().month)+"/"+str(datetime.datetime.now().year)+": "+accion['stock'] + " cierra en "+ accion['close']+". Variación diaria: " + accion['var'])
+         except tweepy.error.TweepError:
+              pass
+         time.sleep(3)

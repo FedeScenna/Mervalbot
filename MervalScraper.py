@@ -2,7 +2,8 @@
 from secrets import *
 from bs4 import BeautifulSoup
 import urllib.request as urllib
-import time, datetime
+import time
+from datetime import datetime
 import pandas as pd
 import tweepy
 
@@ -34,14 +35,14 @@ merval = pd.DataFrame({'stock':stocks,
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret) 
 
 auth.set_access_token(access_token, access_secret)
-
+now = datetime.now()
  #Construct the API instance
 api = tweepy.API(auth) # create an API object
 
 if now.strftime("%A") != ("Saturday" or "Sunday"):  
     for index, accion in merval.iterrows():
          try:
-              api.update_status(str(datetime.datetime.now().day)+"/"+str(datetime.datetime.now().month)+"/"+str(datetime.datetime.now().year)+": "+accion['stock'] + " cierra en "+ accion['close']+". Variación diaria: " + accion['var'])
+              api.update_status(str(now.day)+"/"+str(now.month)+"/"+str(now.year)+":  "+ "$"+accion['stock'] + " cierra en "+ accion['close']+". Variación diaria: " + accion['var'])
          except tweepy.error.TweepError:
               pass
          time.sleep(3)

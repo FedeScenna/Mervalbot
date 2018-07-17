@@ -45,4 +45,3 @@ if now.strftime("%A") != ("Saturday" or "Sunday"):
               api.update_status(str(now.day)+"/"+str(now.month)+"/"+str(now.year)+":  "+ "$"+accion['stock'] + " cierra en "+ accion['close']+". Variación diaria: " + accion['var'])
          except tweepy.error.TweepError:
               pass
-         time.sleep(3)
